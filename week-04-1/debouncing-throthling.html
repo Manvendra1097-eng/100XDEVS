@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculate Sum</title>
+  </head>
+  <body>
+    <input oninput="calcSum()" type="text" placeholder="First number" />
+    <br /><br />
+    <input oninput="calcSum()" type="text" placeholder="Second number" /> <br />
+    <br />
+    <div id="finalSum"></div>
+
+    <script>
+      function calcSum() {
+        const num = document.getElementsByTagName('input');
+
+        fetch(
+          `https://sum-server.100xdevs.com/sum?a=${Number(
+            num[0].value
+          )}&b=${Number(num[1].value)}`
+        )
+          .then((data) => {
+            data.text().then((sum) => {
+              document.getElementById('finalSum').innerText = sum;
+            });
+          })
+          .catch(
+            (err) =>
+              (document.getElementById('finalSum').innerText =
+                'Error in calculating sum')
+          );
+      }
+
+      //   debouncing
+
+      function debounce(callback, time) {
+        let timeout;
+        return function (...args) {
+          if (timeout) {
+            clearTimeout(timeout);
+          }
+          timeout = setTimeout(callback(...args), time);
+        };
+      }
+    </script>
+  </body>
+</html>
