@@ -1,0 +1,28 @@
+.form {
+  display: flex;
+  gap: 2rem;
+}
+
+div {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ddd;
+}
+
+.form > input {
+  background-color: #000;
+  color: #ddd;
+  outline: none;
+  border: none;
+  width: 40px;
+  aspect-ratio: 1/1;
+  text-align: center;
+  font-size: 20px;
+}
+.form > input:focus {
+  outline: #333 solid 4px;
+  border-radius: 2px;
+}
